@@ -1,0 +1,243 @@
+esphome:
+  name: brick-light
+  friendly_name: "BrickLight"
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Logging
+logger:
+  level: INFO
+
+# Home Assistant API
+api:
+  encryption:
+    key: !secret device_api_key
+# OTA Updates
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+# WiFi
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Fallback Hotspot wenn WiFi nicht verfügbar
+  ap:
+    ssid: "BrickLight"
+    password: !secret fallback_password
+
+# Captive Portal (für Fallback Hotspot)
+captive_portal:
+
+# I2C Bus
+i2c:
+  sda: GPIO32
+  scl: GPIO33
+  scan: true
+  frequency: 400kHz
+
+# PCA9685
+pca9685:
+  - id: pca9685_hub
+    address: 0x40
+    frequency: 1000
+
+# 16 Outputs
+output:
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 0
+    id: led_kanal_0
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 1
+    id: led_kanal_1
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 2
+    id: led_kanal_2
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 3
+    id: led_kanal_3
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 4
+    id: led_kanal_4
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 5
+    id: led_kanal_5
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 6
+    id: led_kanal_6
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 7
+    id: led_kanal_7
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 8
+    id: led_kanal_8
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 9
+    id: led_kanal_9
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 10
+    id: led_kanal_10
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 11
+    id: led_kanal_11
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 12
+    id: led_kanal_12
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 13
+    id: led_kanal_13
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 14
+    id: led_kanal_14
+
+  - platform: pca9685
+    pca9685_id: pca9685_hub
+    channel: 15
+    id: led_kanal_15
+
+# 16 Light Entities für Home Assistant
+light:
+  - platform: monochromatic
+    name: "LED 01"
+    output: led_kanal_0
+    id: light_0
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 02"
+    output: led_kanal_1
+    id: light_1
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 03"
+    output: led_kanal_2
+    id: light_2
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 04"
+    output: led_kanal_3
+    id: light_3
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 05"
+    output: led_kanal_4
+    id: light_4
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 06"
+    output: led_kanal_5
+    id: light_5
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 07"
+    output: led_kanal_6
+    id: light_6
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 08"
+    output: led_kanal_7
+    id: light_7
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 09"
+    output: led_kanal_8
+    id: light_8
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 10"
+    output: led_kanal_9
+    id: light_9
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 11"
+    output: led_kanal_10
+    id: light_10
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 12"
+    output: led_kanal_11
+    id: light_11
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 13"
+    output: led_kanal_12
+    id: light_12
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 14"
+    output: led_kanal_13
+    id: light_13
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 15"
+    output: led_kanal_14
+    id: light_14
+    gamma_correct: 2.8
+    default_transition_length: 500ms
+
+  - platform: monochromatic
+    name: "LED 16"
+    output: led_kanal_15
+    id: light_15
+    gamma_correct: 2.8
+    default_transition_length: 500ms

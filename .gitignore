@@ -1,0 +1,5 @@
+/.esphome/
+/secrets.yaml
+/.vscode
+/.idea
+/CLAUDE.md
