@@ -64,8 +64,7 @@ Edit `secrets.yaml` with your details:
 wifi_ssid: "YourWiFiNetwork"
 wifi_password: "YourWiFiPassword"
 fallback_password: "FallbackHotspotPassword"
-device_01_id: "01"
-device_01_api_key: "your-home-assistant-api-encryption-key"
+device_api_key: "your-home-assistant-api-encryption-key"
 ota_password: "your-ota-password"
 ```
 
@@ -127,7 +126,7 @@ esphome run bricklight.yaml
 ESPHome will detect the device on your network and offer OTA as an upload option. You can also target the device directly by hostname or IP:
 
 ```bash
-esphome run bricklight.yaml --device brick-light-01.local
+esphome run bricklight.yaml --device brick-light.local
 ```
 
 ### Other Useful Commands
